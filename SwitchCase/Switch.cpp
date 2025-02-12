@@ -4,25 +4,25 @@
 #include <unordered_map>
 using namespace std;
 vector<int> twoSum(vector<int>& nums, int target) {
-	unordered_map<int, int> numMap; // Lưu giá trị và chỉ số của các phần tử trong mảng
+	unordered_map<int, int> numMap; 
 	for (int i = 0; i < nums.size(); i++) {
-		int complement = target - nums[i]; // Tính giá trị cần tìm
-		if (numMap.find(complement) != numMap.end()) { // Kiểm tra xem giá trị cần tìm có trong map không
-			return { numMap[complement], i }; // Trả về chỉ số của 2 số thỏa mãn
+		int complement = target - nums[i];
+		if (numMap.find(complement) != numMap.end()) {
+			return { numMap[complement], i };
 		}
-		numMap[nums[i]] = i; // Lưu giá trị và chỉ số vào map
+		numMap[nums[i]] = i;
 	}
-	return {}; // Trả về mảng rỗng nếu không tìm thấy
+	return {};
 }
 static vector<int> calculatePrefixSum(vector<int>& nums) {
-	vector<int> numsResult(nums.size()); // Tạo mảng numsResult có cùng kích thước với nums
+	vector<int> numsResult(nums.size());
 	if (nums.size() == 0) {
-		return numsResult; // Trả về mảng rỗng nếu nums rỗng
+		return numsResult;
 	}
 
-	numsResult[0] = nums[0]; // Phần tử đầu tiên của numsResult giống với nums[0]
+	numsResult[0] = nums[0];
 	for (int i = 1; i < nums.size(); i++) {
-		numsResult[i] = numsResult[i - 1] + nums[i]; // Tính tổng các phần tử trước đó
+		numsResult[i] = numsResult[i - 1] + nums[i];
 	}
 
 	return numsResult;
